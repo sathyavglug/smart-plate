@@ -4,9 +4,9 @@ services:
     name: smart-plate-backend
     env: docker
     plan: free
-    region: singapore # Change based on your location
-    buildCommand: null # Handled by Dockerfile
-    startCommand: null # Handled by Dockerfile
+    dockerContext: backend  # Very important!
+    dockerfilePath: Dockerfile 
+    region: singapore
     envVars:
       - key: DATABASE_URL
         fromDatabase:
@@ -15,7 +15,7 @@ services:
       - key: PORT
         value: 8000
       - key: GEMINI_API_KEY
-        sync: false # Set manually in Render dashboard
+        sync: false
 
 databases:
   - name: smartplate-db
