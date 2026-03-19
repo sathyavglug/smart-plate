@@ -4,8 +4,8 @@ services:
     name: smart-plate-backend
     env: docker
     plan: free
-    dockerContext: backend  # Very important!
-    dockerfilePath: Dockerfile 
+    dockerContext: backend
+    dockerfilePath: backend/Dockerfile 
     region: singapore
     envVars:
       - key: DATABASE_URL
