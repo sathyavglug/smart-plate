@@ -78,8 +78,8 @@ def predict_food(image_path: str) -> dict:
 if settings.GEMINI_API_KEY:
     try:
         genai.configure(api_key=settings.GEMINI_API_KEY)
-        _gemini = genai.GenerativeModel('gemini-2.5-flash')
-        print("[AI] Gemini 2.5 Flash initialized")
+        _gemini = genai.GenerativeModel('gemini-2.0-flash')
+        print("[AI] Gemini 2.0 Flash initialized")
     except Exception as e:
         _gemini = None
         print(f"[AI] Gemini initial configuration error: {e}")
@@ -143,7 +143,9 @@ def _predict_with_gemini(image_path: str) -> dict:
         data = json.loads(text)
         return data
     except Exception as e:
-        print(f"[AI] Gemini Error: {e}")
+        print(f"[AI] Gemini Recognition Error: {str(e)}")
+        import traceback
+        traceback.print_exc()
         return None
 
 
